@@ -14,14 +14,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     monaco.editor.create(document.getElementById('testEditor'), {
       value: `
-      object: 
-        test: 123
+object: 
+  test: 123
       `,
       language: 'yaml',
-      lineNumbers: "off",
-      roundedSelection: false,
-      scrollBeyondLastLine: false,
-      readOnly: false,
       theme: "vs-dark",
     });
 

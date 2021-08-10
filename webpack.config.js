@@ -3,9 +3,20 @@ const webpack = require("webpack");
 
 module.exports = (config, options) => {
   console.log("webpack.config");
+
+
+  Object.assign(config.resolve.alias, {
+    'js-yaml$': require.resolve('./src/js-yaml.shim'),
+    // https://github.com/webpack/webpack/issues/13413
+    'original-js-yaml$': require.resolve(
+      './node_modules/js-yaml/dist/js-yaml.mjs',
+    ),
+  });
+
   config.plugins.push(
     new MonacoEditorWebpackPlugin({
-      languages: ['javascript', 'typescript', "css", "html", "json", "yaml"],
+      languages: ['yaml'],
+      globalAPI: true,
       customLanguages: [
         {
           label: "yaml",
